@@ -55,10 +55,10 @@ default-groups = ["dev"]
 plancontract = "plancontract.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/plancontract/plancontract"
-Documentation = "https://github.com/plancontract/plancontract#readme"
-Repository = "https://github.com/plancontract/plancontract"
-Issues = "https://github.com/plancontract/plancontract/issues"
+Homepage = "https://github.com/zamaniali1995/plancontract"
+Documentation = "https://github.com/zamaniali1995/plancontract#readme"
+Repository = "https://github.com/zamaniali1995/plancontract"
+Issues = "https://github.com/zamaniali1995/plancontract/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/plancontract"]
