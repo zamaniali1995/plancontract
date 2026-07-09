@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 220" role="img" aria-label="PlanContract pipeline">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect width="920" height="220" rx="16" fill="url(#bg)"/>
+
+  <text x="460" y="34" text-anchor="middle" fill="#e2e8f0" font-family="ui-sans-serif, system-ui, sans-serif" font-size="22" font-weight="700">
+    PlanContract
+  </text>
+  <text x="460" y="56" text-anchor="middle" fill="#94a3b8" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13">
+    planner output in &#183; validated plan out &#183; dispatch-ready waves
+  </text>
+
+  <path d="M 70 130 H 850" stroke="#334155" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+
+  <circle cx="526" cy="130" r="7" fill="#38bdf8" opacity="0.85"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">
+    <rect x="40" y="98" width="92" height="44" rx="10" fill="#1e293b" stroke="#475569"/>
+    <text x="86" y="118" text-anchor="middle" fill="#cbd5e1">User</text>
+    <text x="86" y="132" text-anchor="middle" fill="#64748b">message</text>
+
+    <rect x="170" y="98" width="108" height="44" rx="10" fill="#1e293b" stroke="#475569"/>
+    <text x="224" y="118" text-anchor="middle" fill="#cbd5e1">Planner</text>
+    <text x="224" y="132" text-anchor="middle" fill="#64748b">LLM JSON</text>
+
+    <rect x="316" y="98" width="108" height="44" rx="10" fill="#172554" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="370" y="118" text-anchor="middle" fill="#bae6fd">PlanDraft</text>
+    <text x="370" y="132" text-anchor="middle" fill="#64748b">tasks[]</text>
+
+    <rect x="462" y="88" width="128" height="64" rx="10" fill="#1e1b4b" stroke="#818cf8" stroke-width="2"/>
+    <text x="526" y="110" text-anchor="middle" fill="#c7d2fe">finalize_draft()</text>
+    <text x="526" y="126" text-anchor="middle" fill="#94a3b8">merge &#183; derive &#183; validate</text>
+    <text x="526" y="142" text-anchor="middle" fill="#64748b">deterministic</text>
+
+    <rect x="628" y="98" width="108" height="44" rx="10" fill="#172554" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="682" y="118" text-anchor="middle" fill="#bae6fd">AgentPlan</text>
+    <text x="682" y="132" text-anchor="middle" fill="#64748b">topology</text>
+
+    <rect x="774" y="98" width="116" height="44" rx="10" fill="#052e16" stroke="#4ade80" stroke-width="1.5"/>
+    <text x="832" y="118" text-anchor="middle" fill="#bbf7d0">Dispatcher</text>
+    <text x="832" y="132" text-anchor="middle" fill="#64748b">waves</text>
+  </g>
+
+  <text x="460" y="188" text-anchor="middle" fill="#64748b" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12">
+    Framework-agnostic &#183; Pydantic &#183; CI-friendly validation
+  </text>
+</svg>
