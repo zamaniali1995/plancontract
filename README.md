@@ -13,7 +13,7 @@
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-3776ab?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-22c55e?style=for-the-badge)](LICENSE)
 [![Typed](https://img.shields.io/badge/typing-strict-8b5cf6?style=for-the-badge)](#)
-[![CI](https://img.shields.io/github/actions/workflow/status/plancontract/plancontract/ci.yml?branch=main&style=for-the-badge&label=CI)](https://github.com/plancontract/plancontract/actions/workflows/ci.yml)
+[![CI](https://img.shields.io/github/actions/workflow/status/zamaniali1995/plancontract/ci.yml?branch=main&style=for-the-badge&label=CI)](https://github.com/zamaniali1995/plancontract/actions/workflows/ci.yml)
 [![Ruff](https://img.shields.io/badge/ruff-linted-fbbf24?style=for-the-badge)](https://docs.astral.sh/ruff/)
 [![Pydantic v2](https://img.shields.io/badge/pydantic-v2-e11d48?style=for-the-badge)](https://docs.pydantic.dev/)
 
@@ -113,7 +113,7 @@ uv add plancontract
 **From source:**
 
 ```bash
-git clone https://github.com/plancontract/plancontract.git
+git clone https://github.com/zamaniali1995/plancontract.git
 cd plancontract
 uv sync
 make ci
