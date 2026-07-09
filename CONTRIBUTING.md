@@ -5,7 +5,7 @@ Thanks for your interest in PlanContract.
 ## Development setup
 
 ```bash
-git clone https://github.com/plancontract/plancontract.git
+git clone https://github.com/zamaniali1995/plancontract.git
 cd plancontract
 uv sync
 ```
