@@ -1,0 +1,16 @@
+{
+  "tasks": [
+    {
+      "task_id": "t1",
+      "agent_id": "travel_agent",
+      "instruction": "find hotels in Kyoto for two adults"
+    },
+    {
+      "task_id": "t2",
+      "agent_id": "billing_agent",
+      "instruction": "confirm corporate card limits for the trip"
+    }
+  ],
+  "locale": "en",
+  "summary": "Planning travel and confirming billing limits."
+}

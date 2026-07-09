@@ -1,0 +1,90 @@
+{
+  "$defs": {
+    "Locale": {
+      "description": "Response locale hint carried with a plan.",
+      "enum": [
+        "en",
+        "fr"
+      ],
+      "title": "Locale",
+      "type": "string"
+    },
+    "PlanTask": {
+      "additionalProperties": false,
+      "description": "One agent invocation within a finalized turn plan.",
+      "properties": {
+        "task_id": {
+          "default": "",
+          "title": "Task Id",
+          "type": "string"
+        },
+        "agent_id": {
+          "title": "Agent Id",
+          "type": "string"
+        },
+        "instruction": {
+          "default": "",
+          "maxLength": 300,
+          "title": "Instruction",
+          "type": "string"
+        },
+        "depends_on": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Depends On",
+          "type": "array"
+        },
+        "extensions": {
+          "additionalProperties": true,
+          "title": "Extensions",
+          "type": "object"
+        }
+      },
+      "required": [
+        "agent_id"
+      ],
+      "title": "PlanTask",
+      "type": "object"
+    },
+    "PlanTopology": {
+      "description": "Execution topology for a single conversational turn.",
+      "enum": [
+        "single",
+        "parallel",
+        "sequential",
+        "mixed",
+        "deferred",
+        "fallback"
+      ],
+      "title": "PlanTopology",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Validated routing plan for one conversational turn.",
+  "properties": {
+    "tasks": {
+      "items": {
+        "$ref": "#/$defs/PlanTask"
+      },
+      "title": "Tasks",
+      "type": "array"
+    },
+    "topology": {
+      "$ref": "#/$defs/PlanTopology",
+      "default": "single"
+    },
+    "locale": {
+      "$ref": "#/$defs/Locale",
+      "default": "en"
+    },
+    "title": {
+      "default": "",
+      "title": "Title",
+      "type": "string"
+    }
+  },
+  "title": "AgentPlan",
+  "type": "object"
+}

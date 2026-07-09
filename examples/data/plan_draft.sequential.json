@@ -1,0 +1,17 @@
+{
+  "tasks": [
+    {
+      "task_id": "t1",
+      "agent_id": "travel_agent",
+      "instruction": "shortlist weekend destinations within 3 hours"
+    },
+    {
+      "task_id": "t2",
+      "agent_id": "billing_agent",
+      "instruction": "estimate total cost for the selected destination",
+      "depends_on": ["t1"]
+    }
+  ],
+  "locale": "en",
+  "summary": "Pick a destination, then estimate cost."
+}

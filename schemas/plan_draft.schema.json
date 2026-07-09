@@ -1,0 +1,74 @@
+{
+  "$defs": {
+    "Locale": {
+      "description": "Response locale hint carried with a plan.",
+      "enum": [
+        "en",
+        "fr"
+      ],
+      "title": "Locale",
+      "type": "string"
+    },
+    "TaskDraft": {
+      "additionalProperties": false,
+      "description": "LLM-facing task proposal before runtime normalization.",
+      "properties": {
+        "task_id": {
+          "default": "",
+          "title": "Task Id",
+          "type": "string"
+        },
+        "agent_id": {
+          "title": "Agent Id",
+          "type": "string"
+        },
+        "instruction": {
+          "default": "",
+          "maxLength": 300,
+          "title": "Instruction",
+          "type": "string"
+        },
+        "depends_on": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Depends On",
+          "type": "array"
+        },
+        "extensions": {
+          "additionalProperties": true,
+          "title": "Extensions",
+          "type": "object"
+        }
+      },
+      "required": [
+        "agent_id"
+      ],
+      "title": "TaskDraft",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Minimal planner output containing proposed tasks and metadata.",
+  "properties": {
+    "tasks": {
+      "items": {
+        "$ref": "#/$defs/TaskDraft"
+      },
+      "title": "Tasks",
+      "type": "array"
+    },
+    "locale": {
+      "$ref": "#/$defs/Locale",
+      "default": "en"
+    },
+    "summary": {
+      "default": "",
+      "maxLength": 240,
+      "title": "Summary",
+      "type": "string"
+    }
+  },
+  "title": "PlanDraft",
+  "type": "object"
+}
