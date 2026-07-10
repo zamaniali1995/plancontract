@@ -1,10 +1,10 @@
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling", "hatch-vcs"]
 build-backend = "hatchling.build"
 
 [project]
 name = "plancontract"
-version = "0.1.2"
+dynamic = ["version"]
 description = "Framework-agnostic schemas and validators for multi-agent turn routing plans"
 readme = "README.md"
 license = "MIT"
@@ -59,6 +59,10 @@ Homepage = "https://github.com/zamaniali1995/plancontract"
 Documentation = "https://github.com/zamaniali1995/plancontract#readme"
 Repository = "https://github.com/zamaniali1995/plancontract"
 Issues = "https://github.com/zamaniali1995/plancontract/issues"
+
+[tool.hatch.version]
+source = "vcs"
+fallback-version = "0.0.0.dev0"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/plancontract"]
