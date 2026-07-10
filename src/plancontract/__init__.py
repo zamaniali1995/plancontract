@@ -1,5 +1,7 @@
 """PlanContract — framework-agnostic schemas for multi-agent turn routing."""
 
+from importlib.metadata import PackageNotFoundError, version
+
 from plancontract.errors import (
     PlanValidationError,
     ValidationCode,
@@ -49,4 +51,13 @@ __all__ = [
     "validate_tasks",
 ]
 
-__version__ = "0.1.2"
+
+def _package_version() -> str:
+    """Return the installed package version from distribution metadata."""
+    try:
+        return version("plancontract")
+    except PackageNotFoundError:
+        return "0.0.0.dev0"
+
+
+__version__ = _package_version()
