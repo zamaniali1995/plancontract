@@ -103,7 +103,7 @@ git push origin v0.1.3
 
 PyPI does not allow re-uploading the same version. Delete and retag only if a release never reached PyPI.
 
-The publish workflow sets the wheel version from the git tag (`SETUPTOOLS_SCM_PRETEND_VERSION_FOR_PLANCONTRACT`) so the built artifact always matches `vX.Y.Z`, even when the checkout is not exactly on the tag commit.
+The publish workflow sets `SETUPTOOLS_SCM_PRETEND_VERSION` from the git tag before `uv build`.
 
 Local builds without a tag report a dev version (for example `0.1.2.dev3+gabc1234`) derived from the latest tag and commit distance.
 
