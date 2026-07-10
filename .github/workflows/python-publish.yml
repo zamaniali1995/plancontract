@@ -22,6 +22,13 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@v5
 
+      - name: Resolve release version from tag
+        if: github.event_name == 'push'
+        run: |
+          TAG="${GITHUB_REF#refs/tags/v}"
+          echo "RELEASE_VERSION=${TAG}" >> "$GITHUB_ENV"
+          echo "Publishing plancontract ${TAG} from tag ${GITHUB_REF_NAME}"
+
       - name: Run tests
         run: |
           uv sync --frozen --all-groups
@@ -31,19 +38,20 @@ jobs:
           uv run pytest
 
       - name: Build package
+        env:
+          SETUPTOOLS_SCM_PRETEND_VERSION_FOR_PLANCONTRACT: ${{ env.RELEASE_VERSION }}
         run: uv build
 
       - name: Verify wheel version matches tag
         if: github.event_name == 'push'
         run: |
-          TAG="${GITHUB_REF#refs/tags/v}"
           BUILT="$(unzip -p dist/plancontract-*.whl 'plancontract-*.dist-info/METADATA' \
             | awk -F': ' '/^Version:/{print $2}')"
-          if [ "$TAG" != "$BUILT" ]; then
-            echo "Tag v${TAG} does not match wheel version ${BUILT}"
+          if [ "${RELEASE_VERSION}" != "${BUILT}" ]; then
+            echo "Tag v${RELEASE_VERSION} does not match wheel version ${BUILT}"
             exit 1
           fi
-          echo "Publishing plancontract ${BUILT}"
 
       - name: Publish to PyPI
+        if: github.event_name == 'push'
         run: uv publish --trusted-publishing always
