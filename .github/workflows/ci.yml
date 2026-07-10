@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Set up Python
+        run: uv python install ${{ matrix.python-version }}
+
+      - name: Sync dependencies
+        run: uv sync --frozen --all-groups
+
+      - name: Ruff format
+        run: uv run ruff format --check src tests
+
+      - name: Ruff lint
+        run: uv run ruff check src tests
+
+      - name: Mypy
+        run: uv run mypy src/plancontract
+
+      - name: Pytest
+        run: uv run pytest --cov=plancontract --cov-report=term-missing
+
+      - name: Build package
+        run: uv build
+
+      - name: Install from wheel
+        run: |
+          uv pip install dist/*.whl
+          uv run python -c "import plancontract; print(plancontract.__version__)"
+
+      - name: CLI smoke test
+        run: |
+          uv run plancontract --help
+          uv run plancontract schema draft | uv run python -c "import json,sys; assert 'tasks' in json.load(sys.stdin)['properties']"
