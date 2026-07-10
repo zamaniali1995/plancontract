@@ -88,19 +88,22 @@ Releases are published from GitHub Actions using [PyPI Trusted Publishing](https
 
 ### Publish a new version
 
-1. Bump version in **both** `pyproject.toml` and `src/plancontract/__init__.py`
-2. Update `CHANGELOG.md`
-3. Run `make ci`
-4. Commit, push to `main`, then tag and push:
+Version comes from the **git tag** (`v0.1.3` → PyPI `0.1.3`). Do not edit version in source files.
+
+1. Update `CHANGELOG.md`
+2. Run `make ci`
+3. Commit and push to `main`, then tag and push:
 
 ```bash
-git tag v0.1.1
-git push origin v0.1.1
+git tag v0.1.3
+git push origin v0.1.3
 ```
 
-5. Watch the [Publish workflow](https://github.com/zamaniali1995/plancontract/actions/workflows/python-publish.yml)
+4. Watch the [Publish workflow](https://github.com/zamaniali1995/plancontract/actions/workflows/python-publish.yml)
 
-The tag (`v0.1.1`) must match `pyproject.toml` version (`0.1.1`). PyPI does not allow re-uploading the same version.
+PyPI does not allow re-uploading the same version. Delete and retag only if a release never reached PyPI.
+
+Local builds without a tag report a dev version (for example `0.1.2.dev3+gabc1234`) derived from the latest tag and commit distance.
 
 Optional GitHub Release (notes for users):
 
