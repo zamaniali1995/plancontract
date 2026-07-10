@@ -11,6 +11,7 @@
 <br/>
 
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-3776ab?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/downloads/)
+[![PyPI](https://img.shields.io/pypi/v/plancontract?style=for-the-badge)](https://pypi.org/project/plancontract/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-22c55e?style=for-the-badge)](LICENSE)
 [![Typed](https://img.shields.io/badge/typing-strict-8b5cf6?style=for-the-badge)](#)
 [![CI](https://img.shields.io/github/actions/workflow/status/zamaniali1995/plancontract/ci.yml?branch=main&style=for-the-badge&label=CI)](https://github.com/zamaniali1995/plancontract/actions/workflows/ci.yml)
@@ -108,9 +109,9 @@ pip install plancontract
 uv add plancontract
 ```
 
-> Package name is reserved; publish with `uv publish` when ready. Until then, install from source below.
+Requires Python **3.11+**.
 
-**From source:**
+**From source (development):**
 
 ```bash
 git clone https://github.com/zamaniali1995/plancontract.git
