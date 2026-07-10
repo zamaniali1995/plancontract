@@ -38,8 +38,13 @@ jobs:
           uv run pytest
 
       - name: Build package
-        env:
-          SETUPTOOLS_SCM_PRETEND_VERSION_FOR_PLANCONTRACT: ${{ env.RELEASE_VERSION }}
+        if: github.event_name == 'push'
+        run: |
+          export SETUPTOOLS_SCM_PRETEND_VERSION="${RELEASE_VERSION}"
+          uv build
+
+      - name: Build package (manual)
+        if: github.event_name == 'workflow_dispatch'
         run: uv build
 
       - name: Verify wheel version matches tag
