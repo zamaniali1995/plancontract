@@ -16,20 +16,11 @@ jobs:
     environment: pypi
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Install uv
         uses: astral-sh/setup-uv@v5
-
-      - name: Verify tag matches package version
-        if: github.event_name == 'push'
-        run: |
-          TAG="${GITHUB_REF#refs/tags/v}"
-          VERSION="$(grep '^version = ' pyproject.toml | sed 's/version = "\(.*\)"/\1/')"
-          if [ "$TAG" != "$VERSION" ]; then
-            echo "Tag v${TAG} does not match pyproject.toml version ${VERSION}"
-            exit 1
-          fi
-          echo "Publishing plancontract ${VERSION}"
 
       - name: Run tests
         run: |
@@ -41,6 +32,18 @@ jobs:
 
       - name: Build package
         run: uv build
+
+      - name: Verify wheel version matches tag
+        if: github.event_name == 'push'
+        run: |
+          TAG="${GITHUB_REF#refs/tags/v}"
+          BUILT="$(unzip -p dist/plancontract-*.whl 'plancontract-*.dist-info/METADATA' \
+            | awk -F': ' '/^Version:/{print $2}')"
+          if [ "$TAG" != "$BUILT" ]; then
+            echo "Tag v${TAG} does not match wheel version ${BUILT}"
+            exit 1
+          fi
+          echo "Publishing plancontract ${BUILT}"
 
       - name: Publish to PyPI
         run: uv publish --trusted-publishing always
