@@ -76,7 +76,7 @@ Releases are published from GitHub Actions using [PyPI Trusted Publishing](https
 3. Set:
    - **Owner:** `zamaniali1995`
    - **Repository name:** `plancontract`
-   - **Workflow name:** `release.yml`
+   - **Workflow name:** `python-publish.yml`
    - **Environment name:** `pypi`
 4. Save
 
@@ -84,7 +84,7 @@ Releases are published from GitHub Actions using [PyPI Trusted Publishing](https
 
 1. Repo → **Settings** → **Environments** → **New environment** → name it `pypi`
 2. (Optional) Add required reviewers for manual approval before publish
-3. Push `.github/workflows/release.yml` to `main`
+3. Push `.github/workflows/python-publish.yml` to `main`
 
 ### Publish a new version
 
@@ -98,7 +98,7 @@ git tag v0.1.1
 git push origin v0.1.1
 ```
 
-5. Watch the [Release workflow](https://github.com/zamaniali1995/plancontract/actions/workflows/release.yml)
+5. Watch the [Publish workflow](https://github.com/zamaniali1995/plancontract/actions/workflows/python-publish.yml)
 
 The tag (`v0.1.1`) must match `pyproject.toml` version (`0.1.1`). PyPI does not allow re-uploading the same version.
 
